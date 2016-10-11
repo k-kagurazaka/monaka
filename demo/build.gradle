@@ -42,6 +42,8 @@ dependencies {
 
     compile rootProject.ext.supportCompatV7
 
+    compile rootProject.ext.ankoSdk
+
     testCompile rootProject.ext.jUnit
     testCompile rootProject.ext.mockito
 
