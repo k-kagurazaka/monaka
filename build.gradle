@@ -1,23 +1,23 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from: rootProject.file('dependencies.gradle')
 
-buildscript {
-    ext.kotlin_version = '1.0.4'
+subprojects {
+    buildscript {
+        repositories {
+            jcenter()
+        }
+
+        dependencies {
+            classpath rootProject.ext.androidMavenGradlePlugin
+        }
+    }
+
     repositories {
         jcenter()
+        mavenCentral()
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.1'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
-}
-
-allprojects {
-    repositories {
-        jcenter()
-    }
+    group = GROUP
+    version = VERSION_NAME
 }
 
 task clean(type: Delete) {
