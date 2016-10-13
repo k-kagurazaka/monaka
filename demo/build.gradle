@@ -48,10 +48,19 @@ dependencies {
     compile rootProject.ext.ankoCompat
     compile rootProject.ext.ankoDesign
 
+    compile rootProject.ext.rxJava
+    compile rootProject.ext.rxAndroid
+    compile rootProject.ext.rxKotlin
+
     testCompile rootProject.ext.jUnit
     testCompile rootProject.ext.mockito
 
     androidTestCompile(rootProject.ext.espresso, {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
+    debugCompile rootProject.ext.leakCanary
+    releaseCompile rootProject.ext.leakCanaryNoOp
+    testCompile rootProject.ext.leakCanaryNoOp
+    androidTestCompile rootProject.ext.leakCanaryNoOp
 }

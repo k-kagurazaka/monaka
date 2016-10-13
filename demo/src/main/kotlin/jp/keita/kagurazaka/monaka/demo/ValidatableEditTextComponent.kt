@@ -6,28 +6,11 @@ import android.support.design.widget.TextInputLayout
 import android.view.View
 import jp.keita.kagurazaka.monaka.MonakaComponent
 import jp.keita.kagurazaka.monaka.ViewBinder
-import org.jetbrains.anko.AnkoContext
-import org.jetbrains.anko.design.textInputLayout
-import org.jetbrains.anko.matchParent
-import org.jetbrains.anko.textChangedListener
+import org.jetbrains.anko.*
+import org.jetbrains.anko.design.*
 
 class ValidatableEditTextComponent : MonakaComponent {
-    var text: String by ViewBinder(
-            get = { textInputEditText.text.toString() },
-            set = { textInputEditText.setText(it) }
-    )
-
-    var validator: ((String) -> String?)? = null
-
-    var errorMessage: String? = null
-        private set
-
-    val hasError: Boolean
-        get() = errorMessage != null
-
-    private lateinit var textInputEditText: TextInputEditText
-    private lateinit var textInputLayout: TextInputLayout
-
+    // View
     override fun createView(ui: AnkoContext<Context>): View = with(ui) {
         textInputLayout = textInputLayout {
             id = R.id.text_input_layout
@@ -45,6 +28,20 @@ class ValidatableEditTextComponent : MonakaComponent {
         textInputLayout
     }
 
+    // Component interface
+    var text: String by ViewBinder(
+            get = { textInputEditText.text.toString() },
+            set = { textInputEditText.setText(it) }
+    )
+
+    var validator: ((String) -> String?)? = null
+
+    var errorMessage: String? = null
+        private set
+
+    val hasError: Boolean
+        get() = errorMessage != null
+
     fun clear() {
         val backup = validator
         validator = null
@@ -54,6 +51,10 @@ class ValidatableEditTextComponent : MonakaComponent {
 
         validator = backup
     }
+
+    // Internal state and logic
+    private lateinit var textInputEditText: TextInputEditText
+    private lateinit var textInputLayout: TextInputLayout
 
     private fun errorMessage(message: String?) {
         if (message != null) {

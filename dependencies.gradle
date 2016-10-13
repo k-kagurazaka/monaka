@@ -22,6 +22,14 @@ ext {
     ankoCompat = "org.jetbrains.anko:anko-appcompat-v7:$ankoVersion"
     ankoDesign = "org.jetbrains.anko:anko-design:$ankoVersion"
 
+    rxJava = 'io.reactivex:rxjava:1.2.1'
+    rxAndroid = 'io.reactivex:rxandroid:1.2.1'
+    rxKotlin = 'io.reactivex:rxkotlin:0.60.0'
+
+    leakCanaryVersion = '1.5'
+    leakCanary = "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}"
+    leakCanaryNoOp = "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanaryVersion}"
+
     jUnit = 'junit:junit:4.12'
     mockito = 'org.mockito:mockito-core:1.10.19'
     espresso = 'com.android.support.test.espresso:espresso-core:2.2.2'

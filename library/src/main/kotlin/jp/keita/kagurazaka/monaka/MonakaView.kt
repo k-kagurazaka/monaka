@@ -27,6 +27,16 @@ class MonakaView<C : MonakaStateComponent> : FrameLayout {
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int)
     : super(context, attrs, defStyleAttr, defStyleRes)
 
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        component?.onAttachedToWindow()
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        component?.onDetachedFromWindow()
+    }
+
     override fun onSaveInstanceState(): Parcelable = Bundle().apply {
         putParcelable(KEY_STATE_SUPER, super.onSaveInstanceState())
         component?.onSaveInstanceState(this)
