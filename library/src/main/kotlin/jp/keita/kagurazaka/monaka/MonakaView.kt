@@ -7,7 +7,7 @@ import android.util.AttributeSet
 import android.widget.FrameLayout
 import org.jetbrains.anko.*
 
-class MonakaComponentWrapper<C : WrappedMonakaComponent> : FrameLayout {
+class MonakaView<C : MonakaStateComponent> : FrameLayout {
     var component: C? = null
         set(value) {
             removeAllViews()

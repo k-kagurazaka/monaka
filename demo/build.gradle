@@ -41,8 +41,12 @@ dependencies {
     compile rootProject.ext.kotlinStdlib
 
     compile rootProject.ext.supportCompatV7
+    compile rootProject.ext.supportDesign
 
     compile rootProject.ext.ankoSdk
+    compile rootProject.ext.ankoSupport
+    compile rootProject.ext.ankoCompat
+    compile rootProject.ext.ankoDesign
 
     testCompile rootProject.ext.jUnit
     testCompile rootProject.ext.mockito

@@ -30,7 +30,7 @@ inline fun <reified C : MonakaComponent>
  * Interface to represent a component that consists of the view and presentation logic and has
  * a feature of keeping the internal state over reconstruction.
  */
-interface WrappedMonakaComponent : MonakaComponent {
+interface MonakaStateComponent : MonakaComponent {
     fun onSaveInstanceState(outState: Bundle) {
     }
 
@@ -38,14 +38,14 @@ interface WrappedMonakaComponent : MonakaComponent {
     }
 }
 
-inline fun <reified C : WrappedMonakaComponent>
-        ViewManager.wrappedComponent(factory: () -> C, theme: Int = 0): MonakaComponentWrapper<C>
-        = wrappedComponent(factory, theme) {}
+inline fun <reified C : MonakaStateComponent>
+        ViewManager.stateComponent(factory: () -> C, theme: Int = 0): MonakaView<C>
+        = stateComponent(factory, theme) {}
 
-inline fun <reified C : WrappedMonakaComponent>
-        ViewManager.wrappedComponent(factory: () -> C, init: C.() -> Unit): MonakaComponentWrapper<C>
-        = wrappedComponent(factory, 0, init)
+inline fun <reified C : MonakaStateComponent>
+        ViewManager.stateComponent(factory: () -> C, init: C.() -> Unit): MonakaView<C>
+        = stateComponent(factory, 0, init)
 
-inline fun <reified C : WrappedMonakaComponent>
-        ViewManager.wrappedComponent(factory: () -> C, theme: Int, init: C.() -> Unit): MonakaComponentWrapper<C>
-        = ankoView({ MonakaComponentWrapper<C>(it).apply { component = factory() } }, theme) { component?.init() }
+inline fun <reified C : MonakaStateComponent>
+        ViewManager.stateComponent(factory: () -> C, theme: Int, init: C.() -> Unit): MonakaView<C>
+        = ankoView({ MonakaView<C>(it).apply { component = factory() } }, theme) { component?.init() }
