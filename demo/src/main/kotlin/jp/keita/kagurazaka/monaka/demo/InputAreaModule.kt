@@ -30,9 +30,7 @@ class InputAreaModule : MonakaStateComponent {
             }
 
             button = button("Button") {
-                onClick {
-                    onButtonClick?.invoke()
-                }
+                onClick { onButtonClick?.invoke() }
             }.lparams {
                 weight = 0.0f
             }

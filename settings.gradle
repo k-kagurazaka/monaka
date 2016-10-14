@@ -1,1 +1,2 @@
-include ':demo', ':library'
+rootProject.name = 'monaka-library'
+include ':demo', ':monaka'
