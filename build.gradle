@@ -14,6 +14,7 @@ subprojects {
     repositories {
         jcenter()
         mavenCentral()
+        maven { url 'http://dl.bintray.com/ngsw-taro/maven' }
     }
 
     group = GROUP

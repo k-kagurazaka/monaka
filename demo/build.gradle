@@ -53,7 +53,8 @@ dependencies {
     compile rootProject.ext.rxKotlin
 
     testCompile rootProject.ext.jUnit
-    testCompile rootProject.ext.mockito
+    testCompile rootProject.ext.knit
+    testCompile rootProject.ext.mockitoKotlin
 
     androidTestCompile(rootProject.ext.espresso, {
         exclude group: 'com.android.support', module: 'support-annotations'
